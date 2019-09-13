@@ -1,0 +1,19 @@
+<template>
+  <article v-if="film">
+    <p>Title: {{ film.title }}</p>
+    <p>Director: {{ film.director }}</p>
+    <p>Description: {{film.description}}</p>
+    <p>Release Year: {{film.release_date }}</p>
+
+  </article>
+</template>
+
+<script>
+export default {
+  name: 'film-detail',
+  props: ['film']
+}
+</script>
+
+<style lang="css" scoped>
+</style>

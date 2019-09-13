@@ -1,28 +1,41 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Ghibli Films</h1>
+    <div>
+      <film-detail v-bind:film="selectedFilm"></film-detail>
+      <films-list v-bind:films="films"></films-list>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import FilmsList from './components/FilmsList.vue';
+import FilmDetail from './components/FilmDetail.vue';
+import { eventBus } from "./main.js";
 
 export default {
   name: 'app',
+  data(){
+    return {
+      films: [],
+      selectedFilm: null
+    };
+  },
+  mounted(){
+    fetch('https://ghibliapi.herokuapp.com/films')
+    .then(result => result.json())
+    .then(films => this.films = films)
+
+    eventBus.$on('film-selected', (film) => {
+      this.selectedFilm = film
+    })
+  },
   components: {
-    HelloWorld
+    "films-list": FilmsList,
+    "film-detail": FilmDetail,
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="css" scoped>
 </style>
