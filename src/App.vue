@@ -3,7 +3,7 @@
     <h1>Ghibli Films</h1>
     <div>
       <film-detail v-bind:film="selectedFilm"></film-detail>
-      <species-select v-bind:speciesList="speciesList"></species-select>
+      <species-select id="species" v-bind:speciesList="speciesList"></species-select>
       <films-list v-bind:films="films"></films-list>
     </div>
   </div>
@@ -36,6 +36,11 @@ export default {
     eventBus.$on('film-selected', (film) => {
       this.selectedFilm = film
     })
+
+    eventBus.$on('species-selected', (species) => {
+      console.log(species.id);
+      console.log(species.name);
+    })
   },
   components: {
     "films-list": FilmsList,
@@ -46,4 +51,23 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+h1 {
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 2px black;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+div {
+  background-color: darkblue;
+margin: 5px;
+}
+
+#species {
+  text-align: left;
+  padding-left: 20px;
+}
+
 </style>

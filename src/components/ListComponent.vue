@@ -1,5 +1,5 @@
 <template lang="html">
-    <li v-on:click="handleClick">{{ film.title }}({{ film.release_date}})</li>
+    <li v-on:click="handleClick">{{ film.title }} ({{ film.release_date}})</li>
 </template>
 
 <script>
@@ -17,4 +17,15 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+li {
+  color: darkblue;
+}
+
+li:hover {
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  font-size: 1.5em;
+}
+
 </style>

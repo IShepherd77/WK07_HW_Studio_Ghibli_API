@@ -19,4 +19,12 @@ export default {
 }
 </script>
 <style lang="css" scoped>
+ol {
+  background-color: lightblue;
+  border: 2px 2px 2px black;
+}
+
+div {
+  border: 1px black;
+}
 </style>
